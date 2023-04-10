@@ -9,7 +9,7 @@ stages:
         steps:
           - checkout: self
 
-  - stage: 'maven clean'
+  - stage: 'maven_clean'
     jobs:
       - job: 
         steps:   
@@ -20,7 +20,7 @@ stages:
               # Write your commands here
               mvn clean
 
-  - stage: 'maven install'
+  - stage: 'maven_install'
     jobs:
       - job: 
         steps:   
@@ -31,7 +31,7 @@ stages:
               # Write your commands here
               mvn install            
   
-  - stage: 'maven package'
+  - stage: 'maven_package'
     jobs:
       - job: 
         steps:   
