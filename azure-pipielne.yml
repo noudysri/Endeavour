@@ -3,14 +3,41 @@ trigger: none
 pr: none
 
 stages:
-  - stage:
+  - stage: CheckoutCode
     jobs:
-      - job:
+      - job: 'CheckoutGitCode'
         steps:
+          - checkout: self
+
+  - stage: 'maven clean'
+    jobs:
+      - job: 
+        steps:   
         - task: Bash@3
           inputs:
             targetType: 'inline'
             script: |
               # Write your commands here
-              
-              mvn clean install package
+              mvn clean
+
+  - stage: 'maven install'
+    jobs:
+      - job: 
+        steps:   
+        - task: Bash@3
+          inputs:
+            targetType: 'inline'
+            script: |
+              # Write your commands here
+              mvn install            
+  
+  - stage: 'maven package'
+    jobs:
+      - job: 
+        steps:   
+        - task: Bash@3
+          inputs:
+            targetType: 'inline'
+            script: |
+              # Write your commands here
+              mvn package  
